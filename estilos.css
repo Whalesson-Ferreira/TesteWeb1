@@ -1,0 +1,28 @@
+body {
+  margin: 0px;
+}
+
+#container {
+  height: 100vh;
+  background: gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#box {
+  background-color: aqua;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+#box div {
+  padding: 5px;
+}
+
+#container-botoes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
