@@ -1,43 +1,10 @@
+import {validarCampoNota} from './funcoes.js';
+
 var btnCalcular = document.getElementById('idCalcular');
 var btnLimpar = document.getElementById('idLimpar');
 var inputNota1 = document.getElementById('idNota1');
 var inputNota2 = document.getElementById('idNota2');
 var pMedia = document.getElementById('idMedia');
-
-function validarCampoNota(inputAtual) {
-  const numeros = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.'];
-  let jaInseriuVirgula = false;
-
-  let conteudoDoInput = inputAtual.value;
-
-  for(let index = 0; index < conteudoDoInput.length; index++) {
-    if(numeros.includes(conteudoDoInput[index]) === false) {
-      conteudoDoInput = conteudoDoInput.substring(0, index) + conteudoDoInput.substring(index+1, conteudoDoInput.length);
-      index--;
-    }
-    else {
-      if(index === 0) {
-        if(conteudoDoInput[index] === '.') {
-          conteudoDoInput = conteudoDoInput.substring(0, index) + conteudoDoInput.substring(index+1, conteudoDoInput.length);
-          index--;
-        }
-      }
-      else {
-        if(conteudoDoInput[index] === '.') {
-          if(jaInseriuVirgula === false) {
-            jaInseriuVirgula = true;
-          }
-          else {
-            conteudoDoInput = conteudoDoInput.substring(0, index) + conteudoDoInput.substring(index+1, conteudoDoInput.length);
-            index--;
-          }
-        }
-      }
-    }
-  }
-  inputAtual.value = conteudoDoInput;
-}
-
 
 function verificarCampos() {
   let n1 = inputNota1.value;
@@ -52,15 +19,11 @@ function verificarCampos() {
   }
 }
 
-
 function calcularMedia(nota1, nota2){
   let media = (nota1+nota2)/2;
   pMedia.innerHTML = 'Média: '+media;
-  pMedia.style.color = 'red'
+  // pMedia.style.color = 'red'
 }
-
-
-
 
 btnCalcular.onclick = function (){
  verificarCampos();
@@ -70,9 +33,8 @@ btnLimpar.onclick = function() {
   inputNota1.value = '';
   inputNota2.value = '';
   pMedia.innerHTML = 'Média: ';
-  pMedia.style.color = 'black'
+  // pMedia.style.color = 'black'
 }
-
 
 inputNota1.oninput = function(ev) {
   validarCampoNota(inputNota1)
